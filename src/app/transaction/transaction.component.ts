@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { RestService } from '../services/rest.service';
+import { TransactionResponse } from '../models/transaction';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transaction',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionComponent implements OnInit {
 
-  constructor() { }
+  //mDataArray: Observable<any[]>;
+  mDataArray:TransactionResponse[]
 
-  ngOnInit() {
+  constructor(
+    private rest:RestService,
+    private router:Router
+  ) { }
+
+  async ngOnInit() {
+  
+  //this.mDataArray = this.rest.getTransaction();
+  this.mDataArray = await this.rest.getTransaction().toPromise();
+
+  }
+
+  onClickTransection(id){
+    this.router.navigate([`transaction/detail/${id}`]);
+  }
+
+  getNumberOfSKU(rawOrder): number {
+    let order = JSON.parse(rawOrder);
+    return order.length;
   }
 
 }

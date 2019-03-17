@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/assets/environments/environment';
+import { RestService } from './services/rest.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cmPOS';
+
+  constructor(
+    private rest:RestService
+  ){}
+  
 }

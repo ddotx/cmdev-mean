@@ -1,0 +1,44 @@
+<div class="row">
+  <form>
+    <section style="background-color:rgb(255, 254, 254);">
+      <div class="form-group">
+
+        <div class="form-group" style="margin-top: 8px;">
+          <label for="change">Change</label>
+          <input type="text" style="font-size: 30px; height: 50px; border-radius: 5px;" disabled class="form-control" id="change" value="฿{{changeNumber | number : '1.2-2'}}">
+        </div>
+
+        <div class="form-group" style="margin-top: 8px;">
+          <label for="paid">Paid</label>
+          <span style="font-size: 30px; height: 50px;border-radius: 5px;" class="currencyinput form-control">฿
+            <input type="text" #mGivenTextInput style="font-size: 30px; height: 45px;" name="given" id="paid" (ngModelChange)="givenNumber=$event"
+              [ngModel]="givenNumber | custom : '1.2-2'">
+          </span>
+        </div>
+
+
+        <div class="row">
+          <div style="display: flex; flex-direction: row; justify-content: space-around;">
+            <div class="note_button" (click)="onClickGiven(1000)">฿1,000</div>
+            <div class="note_button" (click)="onClickGiven(500)">฿500</div>
+            <div class="note_button" (click)="onClickGiven(100)">฿100</div>
+          </div>
+
+          <div style="display: flex; flex-direction: row; justify-content: space-around;">
+            <div class="note_button" (click)="onClickGiven(50)">฿50</div>
+            <div class="note_button" (click)="onClickGiven(20)">฿20</div>
+            <div class="note_button" (click)="onClickGiven(10)">฿10</div>
+          </div>
+
+          <div style="display: flex; flex-direction: row; justify-content: space-around;">
+            <div class="col-sm-4 payment_button" style="background: rgb(149, 150, 147);" (click)="onClickReset()">CLR</div>
+            <div class="col-sm-4 payment_button" style="background: #00a65a;" (click)="onClickExact()">EXACT</div>
+            <div *ngIf="isPaidEnough" class="col-sm-4 payment_button" style="background: #D50000;" (click)="onClickSubmit()">SUBMIT</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </form>
+
+</div>

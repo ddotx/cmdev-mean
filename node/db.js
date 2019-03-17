@@ -1,6 +1,7 @@
 var mongoose = require( 'mongoose' ); 
 
 mongoose.connect('mongodb://127.0.0.1/cmpos', {useNewUrlParser: true}) 
+//mongorestore -d db_name -c collection_name /path/file.bson
 
 mongoose.connection.on('connected', function () {  
   console.log('Mongoose default connection open');

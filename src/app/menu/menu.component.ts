@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  //Pre-selected menu at first sight
+  selectedMenu = 'stock';
+  
   constructor() { }
 
   ngOnInit() {

@@ -1,3 +1,51 @@
-<p>
-  transaction works!
-</p>
+<div class="content-wrapper">
+
+  <section class="content-header">
+    <h1>
+      Transaction
+    </h1>
+  </section>
+
+
+  <section class="content">
+
+    <table id="transaction_table" class="table table-bordered table-striped table-hover"
+      style="height: 300px; max-height: 300px;">
+      <thead>
+        <tr>
+          <th style="width: 10%;">ID</th>
+          <th class="th_center" style="width: 5%;">DATE</th>
+          <th class="th_center" style="width: 5%;">TIME</th>
+          <th class="th_center" style="width: 10%;">STAFF</th>
+          <th class="th_center" style="width: 10%;">CUSTOMER</th>
+          <th class="th_center" style="width: 10%;">TOTAL</th>
+          <th class="th_center" style="width: 10%;">PAID</th>
+          <th class="th_center" style="width: 10%;">#SKU</th>
+          <th class="th_center" style="width: 10%;">DISCOUNT</th>
+          <th class="t_center" style="width: 10%;">WAY</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of mDataArray" style="cursor: pointer;">
+          <td class="td_left" style="width: 10%;"><a routerLink='/transaction/detail/{{item.transaction_id}}' >TRX: {{item.transaction_id}}</a></td>              
+          <td class="td_left" style="width: 5%;">{{item.timestamp | date: 'dd/MM/yyyy'}}</td>
+          <td class="td_left" style="width: 5%;">{{item.timestamp | date: 'HH:mm'}}</td>
+          <td class="td_left" style="width: 10%;">{{item.staff_id}}</td>
+          <td class="td_left" style="width: 20%;">GENERAL</td>
+          <td class="td_left" style="width: 10%;font-weight: 900;">฿{{item.total | number: '1.2-2'}}</td>
+          <td class="td_left" style="width: 10%;">{{item.total == item.paid ? 'FULL' : item.paid | number : '1.2-2'}}</td>
+          <td class="td_left" style="width:10px;">{{getNumberOfSKU(item.order_list) | number}} SKU</td>
+          <td class="td_left" style="width: 10%;">฿{{item.discount | number : '1.2-2'}}</td>
+          <td class="td_left" style="width: 10%;">{{item.payment_type}}</td>
+          
+        </tr>
+      </tbody>
+
+    </table>
+
+
+
+  </section>
+  <!-- /.content -->
+</div>

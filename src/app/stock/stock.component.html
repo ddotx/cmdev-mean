@@ -1,3 +1,134 @@
-<p>
-  stock works!
-</p>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Stock
+            <small>Report</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> Home</a>
+            </li>
+            <li>
+                <a href="#">Stock</a>
+            </li>
+        </ol>
+    </section>
+
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon">
+                                <img src="{{baseUrl}}assets/images/ic_product.png" class="logo">
+                            </span>
+                            <div class="info-box-content">
+                                <p class="p_custom">Products
+                                </p>
+                                <h2>12</h2>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon">
+                                <img src="{{baseUrl}}assets/images/ic_new.png" class="logo">
+                            </span>
+                            <div class="info-box-content">
+                                <p class="p_custom">Defect
+                                </p>
+                                <h2>0</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon">
+                                <img src="{{baseUrl}}assets/images/ic_out_of_stock.png" class="logo">
+                            </span>
+                            <div class="info-box-content">
+                                <p class="p_custom">SoldOut
+                                </p>
+                                <h2 *ngIf="mOutOfStockCount!=null">{{mOutOfStockCount.out_of_stock_product}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+
+                    <div class="box-body">
+                        <div class="row" style="margin-bottom: 40px;">
+                            <div class="col-xs-6">
+                                <!-- <input (keyup)="onSearch($event.target.value)" type="search" class="form-control input-lg" placeholder="Enter search keyword" style="border-radius:10px;"> -->
+                                
+                                <!--DEBOUNCE-->
+                                <input (keyup)="searchTerm$.next($event.target.value)" type="search"
+                                    class="form-control input-lg" placeholder="Enter search keyword"
+                                    style="border-radius:10px;">
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <a routerLink="/stock/create" style="float:right; margin:0; width: 100px;"
+                                    class="btn btn-success btn-lg">เพิ่ม</a>
+                            </div>
+                        </div>
+
+                        <table id="stock_table" class="table table-bordered table-striped table-hover"
+                            style="height: 300px; max-height: 300px;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%;text-align: center;">ID</th>
+                                    <th style="width: 50%;">NAME</th>
+                                    <th style="width: 9%;">PRICE</th>
+                                    <th style="width: 9%;">STOCK</th>
+                                    <th style="width: 11%;text-align: center;">ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let item of (mDataArray | async)?.slice().reverse()">
+                                    <td style="text-align: center;">{{item.product_id}}</td>
+                                    <td>
+                                        <span style="margin-right:10px">
+                                            <img src="{{node_static_url}}/images/{{item.image}}"
+                                                style="max-width: 50px;">
+                                        </span>
+                                        <strong
+                                            style="width: 70px;overflow: hidden;white-space: nowrap; text-overflow: ellipsis;">
+                                            {{item.name}}
+                                        </strong>
+                                    </td>
+                                    <td>฿{{item.price | number: '1.2-2'}}</td>
+                                    <td>{{item.stock | number}} PCS.</td>
+                                    <td style="text-align: center;">
+                                        <img (click)="editProduct(item.product_id)"
+                                            src="{{baseUrl}}assets/images/ic_edit.png" alt="edit"
+                                            style="width:20px;margin-left:7px; cursor: pointer;">
+                                        <img (click)="deleteProduct(item.product_id)"
+                                            src="{{baseUrl}}assets/images/ic_delete.png" alt="delete"
+                                            style="width:20px;margin-left:7px; cursor: pointer;">
+
+                                    </td>
+                                </tr>
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+
+</div>

@@ -1,3 +1,100 @@
-<p>
-  shop works!
-</p>
+<div class="content-wrapper">
+  <section class="content">
+
+    <div class="row">
+      <div class="col-md-4">
+        <div style="max-width:100%;">
+          <ul *ngIf="mOrderArray.length > 0" class="card" style="height: 390px; max-height: 390px;overflow-x: hidden; cursor: pointer;">
+            <li *ngFor="let item of mOrderArray" [ngClass]="item ==  mSelectedOrderLine ? 'selected_row': 'normal_row'" (click)="onClickOrderedItem(item)">
+              <table style="width:100%;margin-left: 8px;padding-right: 2px;margin-right: 0px;border-right-style: solid;">
+                <tr>
+                  <td class="td_orderline">
+
+                    <div class="image_product_list_item">                      
+                      <img src="{{node_static_url}}/images/{{item.image}}" style="height: 100px; width: 100px;">
+                    </div>
+                    <div class="title_product_list_item">{{item.name}}</div>
+
+
+                    <div class="price_product_list_item">
+                      ฿{{item.price | number : '1.2-2'}}
+                      <span style="cursor:pointer;float:right;padding:6px;" (click)="removeOrder(item)">
+                        <img src="{{baseUrl}}assets/images/delete.png" class="nbutton_delete" style="margin-right: 8px;">
+                      </span>
+                    </div>
+
+                  </td>
+
+                </tr>
+
+
+              </table>
+            </li>
+          </ul>
+
+          <ul *ngIf="mOrderArray.length == 0" class="card" style="height: 390px; max-height: 390px; line-height: 400px; text-align: center; color: #999999; font-size:20px;">Waiting for Order</ul>
+
+          <div class="card">
+            <div style="padding-top:16px;">
+
+           
+              <!-- Tax -->
+              <div class="row" style="padding-left: 12px;padding-right: 12px;">
+                <div class="col-md-6 pull-left" style="color: #777777;">
+                  <b style="font-size: 20px; font-weight: 100;">Tax 7%</b>
+                </div>
+                <div class="col-md-6" style="text-align:right; margin-bottom: 16px;">
+                  <span>
+                    <b style="font-size: 18px;font-weight: 100;">฿{{mTaxAmt | number: '1.2-2'}} </b>
+                  </span>
+                </div>
+              </div>
+           
+
+                 <!-- Grand-total -->
+                 <div class="row" style="padding-left: 12px;padding-right: 12px;">
+                    <div class="col-md-2 pull-left" style="color: #777777;">
+                      <b style="font-size: 20px;">Total</b>
+                    </div>
+                    <div class="col-md-10" style="text-align:right; margin-bottom: 16px;">
+                      <span>
+                        <b style="font-size: 27px; color: red;">฿{{mTotalPrice | number: '1.2-2'}} </b>
+                      </span>
+                    </div>
+                  </div>
+              <button (click)="onClickBtnPayment()" class="payment_btn btn btn-default">
+                <strong>Payment</strong>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div *ngIf="mIsPaymentShown == false" class="col-md-8" style="max-height: 710px;overflow-y: scroll;">
+        <div class="row">
+          <div *ngFor="let item of mProductArray" class="col-sm-4 col-md-3 newpadding_item" (click)="pushNewOrder(item)">
+
+            <div class="card">
+              <div class="thumbnail" style="margin-bottom: 0px;">
+                <img src="{{node_static_url}}/images/{{item.image}}" class="portrait" style="margin-top:15px;width:100%;opacity:0.85">
+              </div>
+              <span [ngClass]="isSelectedItem(item) == true ? 'nprice_tag_selected' : 'nprice_tag'">
+                D{{item.product_id}} / ฿{{item.price | number}} / {{item.qty}} pcs.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="mIsPaymentShown == true" class="col-md-8" style="max-height: 710px;overflow-y: scroll; height:900px;">
+        <div class="row" style="background-color: white; height: 100%; margin-right: 8px; margin-top: 13px;">
+          <div class="col-md-2"></div>
+          <app-payment (onCompleted)="onPaymentCompleted()" [productOrder]="jsonOrderArray" [totalNumber]="mTotalPrice" class="col-md-8"
+            style="margin-top: 50px;"></app-payment>
+          <div class="col-md-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

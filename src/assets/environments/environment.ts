@@ -3,8 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  node_static_url: "http://localhost:8081",
+  baseUrl: "",
+  localUser: "localUser",
+  localAuthenInfo: "localAuthenInfo"
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
