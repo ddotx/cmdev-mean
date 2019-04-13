@@ -12,6 +12,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { TransactionDetailComponent } from './transaction-detail/transaction-detail.component';
 import { AuthenGuard } from './service/authen.guard';
 import { DeActivatedGuard } from './service/candeactivated.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'transaction/detail/:id', component: TransactionDetailComponent},
   { path: 'report', component: ReportComponent },
   { path: 'payment', component: PaymentComponent},
+  { path: 'dashboard', component: DashboardComponent},
   { path: '**', redirectTo: 'login'}
 ];
 

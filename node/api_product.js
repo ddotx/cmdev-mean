@@ -27,21 +27,28 @@ router.get('/product', jwt.verify //intetcept
 //Upload
 router.post('/product', (req,res)=>{
   try {
-    var form = new formidable.IncomingForm();
+    var form = new formidable.IncomingForm(); //input data
+
     var newname = Date.now();
-    form.parse(req, async(err, fields, files) => {
-               
+    
+    form.parse(req, async(err, fields, files) => {  
+
+      //Create name for uploaded images
       var fileExtention = files.upload_file.name.split(".")[1];
       newname = `${newname}.${fileExtention}`
+
+      //Create path for uploaded images
       var newpath = path.resolve(__dirname + "/uploaded/images/") +  "/" + newname;      
       
+      //Move to new path
       var oldpath = files.upload_file.path;
       await fs.move(oldpath, newpath);
+
       //then
       fields.image = newname
-      var result = await Products.create(fields);
+      var result = await Products.create(fields); //create into db
       //then
-      console.log("Add product with file: " + JSON.stringify(result))
+      //console.log("Add product with file: " + JSON.stringify(result))
       res.json(result)
     });
   } catch (err) {
@@ -66,7 +73,7 @@ router.get("/product/id/:id", jwt.verify, function(req, res) {
 //Delete
 router.delete('/product/id/:id', async (req,res)=>{
   var productID = req.params.id;
-  console.log("delete: " + productID);
+  //console.log("delete: " + productID);
   await Products.findOneAndDelete({product_id: productID});
   //then
   res.json({result: 'OK'});

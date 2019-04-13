@@ -26,7 +26,8 @@ import { AuthenGuard } from './service/authen.guard';
 import { DeActivatedGuard } from './service/candeactivated.guard';
 //chart === Report
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxChartsModule } from '@swimlane/ngx-charts'
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts'
     RegisterComponent,
     PaymentComponent,
     CustomPipe,
-    TransactionDetailComponent
+    TransactionDetailComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

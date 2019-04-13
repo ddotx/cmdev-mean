@@ -68,8 +68,10 @@
                                             <img src="{{baseUrl}}assets/images/ic_photo.png"
                                                 style="width:25px;height:20px">
                                             <span style="color:#00B0CD;margin-left:10px;">Change</span>
+
                                             <input type="file" (change)="onUploadImage($event)" class="picupload"
                                                 multiple="" accept="image/*" id="files">
+
                                         </span>
                                     </li>
                                 </ul>
@@ -79,12 +81,13 @@
                 </form>
             </div>
             <div class="box-footer" style="margin-top:50px">
+
                 <input type="submit" value="Submit" class="btn btn-primary pull-right" (click)="onAddProduct()">
+                
                 <a type="Button" class="btn btn-default pull-right" style="margin-right:10px"
                     (click)="onClickCancel()">Cancel</a>
             </div>
         </div>
     </section>
     <!-- /.content -->
-
 </div>

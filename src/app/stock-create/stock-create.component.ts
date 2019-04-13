@@ -40,7 +40,7 @@ export class StockCreateComponent implements OnInit {
     formData.append('price',this.mProduct.price.toString());
     formData.append('upload_file',this.mProduct.image);
 
-    await this.rest.addProduct(formData).toPromise();
+    await this.rest.addProduct(formData).toPromise(); //==> convert observable to promise
     this.location.back();
     //alert(JSON.stringify(this.mProduct))
   }
@@ -49,9 +49,10 @@ export class StockCreateComponent implements OnInit {
     this.mProduct.image = event.target.files[0];
 
     if (this.mProduct.image) {
-      const reader = new FileReader();
-      reader.onload = e => (this.imageSrc = reader.result);
-      reader.readAsDataURL(this.mProduct.image);
+      const reader = new FileReader(); 
+      //Use event handlers==> triggered when reading operation is completed
+      reader.onload = e => (this.imageSrc = reader.result); //==> (prop) FileReader.result
+      reader.readAsDataURL(this.mProduct.image); //==> (method) FileReader.readAsDataURL
     }
   }
 

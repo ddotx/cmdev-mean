@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class TransactionComponent implements OnInit {
 
-  //mDataArray: Observable<any[]>;
-  mDataArray:TransactionResponse[]
+  //mTranArray: Observable<any[]>;
+  mTranArray:TransactionResponse[];
 
   constructor(
     private rest:RestService,
@@ -21,8 +21,8 @@ export class TransactionComponent implements OnInit {
 
   async ngOnInit() {
   
-  //this.mDataArray = this.rest.getTransaction();
-  this.mDataArray = await this.rest.getTransaction().toPromise();
+  // this.mTranArray = this.rest.getTransaction();
+  this.mTranArray = await this.rest.getTransaction().toPromise();
 
   }
 

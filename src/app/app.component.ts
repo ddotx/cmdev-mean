@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'cmPOS';
 
   constructor(
-    private rest:RestService
+    public rest:RestService
   ){}
   
 }

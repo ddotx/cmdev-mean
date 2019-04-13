@@ -93,8 +93,7 @@ sendTransaction(tranaction:TransactionRequest){
 
   getTransaction(){
     const url = `${this.transactionUrl}`;
-    return this.http.get<TransactionResponse[]>(url);
-
+    return this.http.get<any[]>(url);
   }
 
   getTransactionById(id:string){

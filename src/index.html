@@ -1,9 +1,28 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>CmPOS</title>
   <base href="/">
+
+  <!-- From oneSignal -->
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: "676e2854-a8a1-4ad2-b789-497a24271766",
+      });
+    });
+
+    // OneSignal.getUserId(function (userId) {
+    //   if (null != userId) {
+    //     alert("userID: " + userId)
+    //     console.log("this user id is blank, and so they cannot subscribe");
+    //   }
+    // });
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -21,23 +40,27 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="assets/dist/css/skins/_all-skins.min.css">
 </head>
+
 <body>
   <app-root></app-root>
 
-<!-- jQuery 3 -->
-<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="assets/bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="assets/dist/js/adminlte.min.js"></script>
-<!-- Sparkline -->
-<script src="assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<!-- jvectormap  -->
-<script src="assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- SlimScroll -->
-<script src="assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <!-- jQuery 3 -->
+  <script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="assets/bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="assets/dist/js/adminlte.min.js"></script>
+  <!-- Sparkline -->
+  <script src="assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+  <!-- jvectormap  -->
+  <script src="assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+  <script src="assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+  <!-- SlimScroll -->
+  <script src="assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+  <script src="assets/bower_components/chart.js/Chart.js"></script>
 </body>
+
 </html>

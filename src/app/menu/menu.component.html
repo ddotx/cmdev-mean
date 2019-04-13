@@ -1,49 +1,59 @@
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
-  <!-- sidebar: style can be found in sidebar.less -->
-  <section class="sidebar">
-      <ul class="sidebar-menu">
-          <li class="header" style="padding:0;position:relative;">
-              <img src="{{baseUrl}}assets/images/big_banner.jpg" style="height: 230px" class="img-responsive" alt="profile">
-          </li>
-          <li class="header">MAIN NAVIGATION</li>
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="header" style="padding:0;position:relative;">
+                <img src="{{baseUrl}}assets/images/big_banner.jpg" style="height: 230px" class="img-responsive"
+                    alt="profile">
+            </li>
+            <li class="header">MAIN NAVIGATION</li>
 
-          <!-- Stock -->
-          <li [ngClass]="selectedMenu == 'stock' ? 'treeview active' : 'treeview'" class="treeview">
-              <a routerLink="/stock" (click)="selectedMenu='stock'" class="linkCustom">
-                  <i class="fa fa-database"></i>
-                  <span style="font-size: 18px;">สต๊อก</span>
-              </a>
-          </li>
-          <!-- Shop -->
-          <li [ngClass]="selectedMenu == 'shop' ? 'treeview active' : 'treeview'" class="treeview">
-              <a routerLink="/shop" (click)="selectedMenu='shop'" class="linkCustom">
-                  <i class="fa fa-shopping-basket"></i>
-                  <span style="font-size: 18px;">หน้าร้าน</span>
-              </a>               
-          </li>
-          
-          <!-- Report -->
-          <li [ngClass]="selectedMenu == 'report' ? 'treeview active' : 'treeview'" class="treeview">
-                  <a routerLink="/report" (click)="selectedMenu='report'" class="linkCustom">
-                      <i class="fa fa-pie-chart"></i>
-                      <span style="font-size: 18px;">กราฟ</span>
-                  </a>
-              </li>
+            <!-- Dashboard -->
+            <!-- <a [routerLink]="[ '/path' ]" routerLinkActive="active">name</a> -->
+            <li class="treeview" routerLinkActive="active">
+                <a routerLink="/dashboard" class="linkCustom">
+                    <i class="fa fa-database"></i>
+                    <span style="font-size: 18px;">Dashboard</span>
+                </a>
+            </li>
 
-         <!-- Transaction -->
-          <li [ngClass]="selectedMenu == 'transaction' ? 'treeview active' : 'treeview'" class="treeview">
-              <a routerLink="/transaction" (click)="selectedMenu='transaction'" class="linkCustom">
-                  <i class="fa fa-money"></i>
-                  <span style="font-size: 18px;">รายการขาย</span> 
-                  
-              </a>
-          </li>
+            <!-- Stock -->
+            <li class="treeview" routerLinkActive="active">
+                <a routerLink="/stock" class="linkCustom">
+                    <i class="fa fa-database"></i>
+                    <span style="font-size: 18px;">สต๊อก</span>
+                </a>
+            </li>
+            <!-- Shop -->
+            <li class="treeview" routerLinkActive="active">               
+                <a routerLink="/shop" class="linkCustom">
+                    <i class="fa fa-shopping-basket"></i>
+                    <span style="font-size: 18px;">หน้าร้าน</span>
+                </a>
+            </li>
 
-       
+            <!-- Report -->
+            <li class="treeview" routerLinkActive="active">               
+                <a routerLink="/report" class="linkCustom">
+                    <i class="fa fa-pie-chart"></i>
+                    <span style="font-size: 18px;">กราฟ</span>
+                </a>
+            </li>
 
-      </ul>
-  </section>
+            <!-- Transaction -->
+            <li class="treeview" routerLinkActive="active">                
+                <a routerLink="/transaction" class="linkCustom">
+                    <i class="fa fa-money"></i>
+                    <span style="font-size: 18px;">รายการขาย</span>
+
+                </a>
+            </li>
+
+
+
+        </ul>
+    </section>
 </aside>
 <script src="/assets/bower_components/js/bootstrap.min.js"></script>
 <script src="/assets/bower_components/js/jquery-2.2.3.min.js"></script>
